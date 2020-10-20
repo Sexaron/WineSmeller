@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "WineSmeller_v1.0"

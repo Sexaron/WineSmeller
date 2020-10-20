@@ -1,0 +1,7 @@
+Main MySQL Database and Database username have been successfully created!!
+To administer your database(s) using phpMyAdmin tool, to create more databases, to delete a database, to import sql code, to backup one of your databases or to change MySQL password, choose Manage DB from Main Menu.
+
+MySQL Main Database name: 193651
+MySQL Database username: 193651
+MySQL Database password: equal with account password
+MySQL Database host: localhost 

@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Wine Smeller</string>
+    <string name="activityTitle_auth">Autenticación</string>
+    <string name="activityTitle_board">Cartel</string>
+
+    <string name="hintEditText_email">Email</string>
+    <string name="hintEditText_password">Contraseña</string>
+
+    <string name="textButton_signUp">Registrar</string>
+    <string name="textButton_login">Acceder</string>
+    <string name="textButton_confirm">Confirmar</string>
+    <string name="textButton_cancel">Cancelar</string>
+
+    <string name="textCheckBox_savingCredentials">Guardar sesión</string>
+
+    <string name="title_ic_baseline_search">Buscar</string>
+
+    <string name="title_optionMenu_settings">Ajustes</string>
+    <string name="title_optionMenu_closeSession">Cerrar sesión</string>
+
+    <string name="descImageView_icon">Icono Wine Smeller</string>
+
+    <string name="prefs_file">com.projects.winesmiller_v10.PREFERENCE_FILE_KEY</string>
+</resources>
