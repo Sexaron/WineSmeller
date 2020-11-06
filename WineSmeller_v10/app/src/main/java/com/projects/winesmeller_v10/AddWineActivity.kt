@@ -1,24 +1,21 @@
 package com.projects.winesmeller_v10
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.*
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import kotlinx.android.synthetic.main.activity_board.*
+import kotlinx.android.synthetic.main.activity_board.drawer_layout_add_wine
+import kotlinx.android.synthetic.main.activity_board.nav_view
 
-class BoardActivity : AppCompatActivity() {
-
-        //LOGS
-    val LOG_INFO    = "LOG_INFO"
-    val LOG_ERROR   = "LOG_ERROR"
+class AddWineActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_board)
+        setContentView(R.layout.activity_add_wine)
         setSupportActionBar(findViewById(R.id.fragment_my_toolbar))
-        setTitle(R.string.activityTitle_board)
+        setTitle(R.string.activityTitle_addWine)
 
             // Agrega el botón de navegación al menu lateral
         Utilities.showHomeButton(true, supportActionBar, R.drawable.ic_menu)
@@ -29,9 +26,8 @@ class BoardActivity : AppCompatActivity() {
             // Listener del menú lateral
         Utilities.setNavigationItemSelectedListener(nav_view, this )
 
-            // Guardar sesión
-        saveSession()
     }
+
 
     /*************************************************************************************
      * Las dos siguientes funciones se encargan de gestionar las opciones de la action bar
@@ -52,7 +48,7 @@ class BoardActivity : AppCompatActivity() {
             }
 
             R.id.idOptionMenuCloseSession   -> {
-                Utilities.closeSession(this, getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE))
+                Utilities.closeSession(this, getSharedPreferences(getString(R.string.prefs_file), MODE_PRIVATE))
             }
 
             android.R.id.home               -> {
@@ -62,23 +58,5 @@ class BoardActivity : AppCompatActivity() {
         }
 
         return super.onOptionsItemSelected(item)
-    }
-
-    /*************************************************************************************
-     * Pregunta si se pulsó la opción de guardar credenciales.
-     * Si es true, los credenciales se guardan en el sharedPreferences
-     *************************************************************************************/
-    private fun saveSession(){
-
-        val bundle = intent.extras
-        val email = bundle?.getString("email")
-        val check = bundle?.getBoolean("check")
-
-        if (check != null && check == true) {
-            val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE ).edit()
-            prefs.putString("email", email)
-            prefs.putBoolean("check", check)
-            prefs.apply()
-        }
     }
 }

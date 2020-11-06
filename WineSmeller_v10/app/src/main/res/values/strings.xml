@@ -1,24 +1,49 @@
 <resources>
+        // App y activities
     <string name="app_name">Wine Smeller</string>
     <string name="activityTitle_auth">Autenticación</string>
     <string name="activityTitle_board">Cartel</string>
+    <string name="activityTitle_addWine">Guardando en la bodega</string>
 
+        // Hints
     <string name="hintEditText_email">Email</string>
     <string name="hintEditText_password">Contraseña</string>
 
+        // Text Buttons
     <string name="textButton_signUp">Registrar</string>
     <string name="textButton_login">Acceder</string>
     <string name="textButton_confirm">Confirmar</string>
     <string name="textButton_cancel">Cancelar</string>
 
+        // Text Checkboxes
     <string name="textCheckBox_savingCredentials">Guardar sesión</string>
 
+        // Titles
     <string name="title_ic_baseline_search">Buscar</string>
-
     <string name="title_optionMenu_settings">Ajustes</string>
     <string name="title_optionMenu_closeSession">Cerrar sesión</string>
 
+        // Description of images/icons
     <string name="descImageView_icon">Icono Wine Smeller</string>
+    <string name="descImageView_my_profile">Imagen de perfil</string>
 
+        // Shared File
     <string name="prefs_file">com.projects.winesmiller_v10.PREFERENCE_FILE_KEY</string>
+
+        // Textos de las opciones del menú navegator
+    <string name="menu_home">Home</string>
+    <string name="menu_board">Cartel</string>
+    <string name="menu_yourWinery">Tu Bodega</string>
+    <string name="menu_addWine">Uno Más</string>
+    <string name="menu_search">Buscador</string>
+    <string name="menu_foro">Foro</string>
+    <string name="menu_scanner">Escáner</string>
+    <string name="menu_cataNotes">Nota de catas</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    // Textos a eliminar
+    <string name="nombrePerfil">Pepa Martina</string>
+    <string name="emailPerfil">PepaMartina@gmail.com</string>
+    <string name="probando">PROBANDO</string>
+
 </resources>

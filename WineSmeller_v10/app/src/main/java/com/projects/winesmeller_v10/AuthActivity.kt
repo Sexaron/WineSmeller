@@ -14,15 +14,18 @@ import org.json.JSONObject
 
 class AuthActivity : AppCompatActivity() {
 
+        //LOGS
     val LOG_INFO    = "LOG_INFO"
     val LOG_ERROR   = "LOG_ERROR"
-    val URL_SERVER  = "http://192.168.1.39:8080/developer"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
         setSupportActionBar(findViewById(R.id.my_toolbar_auth))
         setTitle(R.string.activityTitle_auth)
+
+            // Elimina la barra de notificaciones
+        Utilities.noShowNotificationBar(this.window)
 
             // Comprobar si saltar pantalla de autenticación
         startSession()
@@ -39,7 +42,7 @@ class AuthActivity : AppCompatActivity() {
             val password    = idEditText_Password.text.toString()
             val checkBox= findViewById<CheckBox>(R.id.idCheckBox_SaveCredentials)
 
-            accessSignUpAndLogIn("$URL_SERVER/userAuthentication.php?email=$email&password=$password", email, checkBox.isChecked )
+            accessSignUpAndLogIn("${Constants.URL_SERVER}/${Constants.SC_USER_AUTHENTICATION}?email=$email&password=$password", email, checkBox.isChecked )
         }
 
         idButton_Login.setOnClickListener {
@@ -47,7 +50,7 @@ class AuthActivity : AppCompatActivity() {
             val password    = idEditText_Password.text.toString()
             val checkBox= findViewById<CheckBox>(R.id.idCheckBox_SaveCredentials)
 
-            accessSignUpAndLogIn("$URL_SERVER/userLogin.php?email=$email&password=$password", email, checkBox.isChecked)
+            accessSignUpAndLogIn("${Constants.URL_SERVER}/${Constants.SC_USER_LOGIN}?email=$email&password=$password", email, checkBox.isChecked)
         }
     }
 

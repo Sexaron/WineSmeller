@@ -10,7 +10,7 @@
         android:id="@+id/fragment_my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
+        android:background="@mipmap/nav_header_background"
         android:theme="@style/AppTheme"
         app:theme="@style/MyCustomToolBarTheme"/>
 
@@ -18,5 +18,6 @@
 
 
 <!--    -->
-<!--    app:subtitleTextColor="#FFFFFF"-->
+<!--    app:subtitleTextColor="#FFFFFF"
+        android:background="@color/colorPrimary"-->
 <!--    app:titleTextColor="#FFFFFF"-->
