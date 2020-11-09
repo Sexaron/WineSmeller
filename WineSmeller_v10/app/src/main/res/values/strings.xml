@@ -8,6 +8,7 @@
         // Hints
     <string name="hintEditText_email">Email</string>
     <string name="hintEditText_password">Contraseña</string>
+    <string name="hintEditText_searcher">Buscar..</string>
 
         // Text Buttons
     <string name="textButton_signUp">Registrar</string>
@@ -40,6 +41,21 @@
     <string name="menu_scanner">Escáner</string>
     <string name="menu_cataNotes">Nota de catas</string>
     <string name="menu_slideshow">Slideshow</string>
+
+        // Textos de activity Añadir Vino
+    <string name="textView_addWine_name">Nombre</string>
+    <string name="textView_addWine_alcohol">Grados</string>
+    <string name="textView_addWine_year">Año</string>
+    <string name="textView_addWine_winery">Bodega</string>
+    <string name="textView_addWine_barcode">Código de barras</string>
+    <string name="textView_addWine_denominationOfOrigin">Denominación de origen</string>
+    <string name="textView_addWine_ecologic">Ecológico</string>
+    <string name="textView_addWine_aging">Envejecimiento</string>
+    <string name="textView_addWine_country">País</string>
+    <string name="textView_addWine_typeOfGrape">Tipo de uva</string>
+    <string name="textView_addWine_typeOfWine">Tipo de vino</string>
+    <string name="textView_addWine_rating">Puntuación</string>
+    <string name="textView_addWine_notes">Notas</string>
 
     // Textos a eliminar
     <string name="nombrePerfil">Pepa Martina</string>

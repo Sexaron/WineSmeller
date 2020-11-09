@@ -3,12 +3,20 @@ package com.projects.winesmeller_v10
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import kotlinx.android.synthetic.main.activity_board.drawer_layout_add_wine
 import kotlinx.android.synthetic.main.activity_board.nav_view
 
 class AddWineActivity : AppCompatActivity() {
+
+        // Spinners a declarar
+//    lateinit var spinner_aging : Spinner
+//    lateinit var spinner_countries : Spinner
+//    lateinit var spinner_wine_types :
+    lateinit var textView_spinner_aging        : TextView
+    lateinit var textView_spinner_countries    : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -26,7 +34,25 @@ class AddWineActivity : AppCompatActivity() {
             // Listener del menú lateral
         Utilities.setNavigationItemSelectedListener(nav_view, this )
 
+        textView_spinner_aging     = findViewById(R.id.text_view_spinner_aging     )
+        textView_spinner_countries = findViewById(R.id.text_view_spinner_countries )
+
+        val listCountries  : Array<out String>   = resources.getStringArray(R.array.array_countries )
+        val listAging      : Array<out String>   = resources.getStringArray(R.array.array_aging     )
+
+
+
+        textView_spinner_aging.setOnClickListener {
+            Utilities.spinnerSearch(this, listAging, R.string.textView_addWine_aging, textView_spinner_aging)
+        }
+
+        textView_spinner_countries.setOnClickListener {
+            Utilities.spinnerSearch(this, listCountries, R.string.textView_addWine_country, textView_spinner_countries)
+        }
+
     }
+
+
 
 
     /*************************************************************************************

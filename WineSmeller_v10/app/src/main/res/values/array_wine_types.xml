@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_wine_types">
+        <item>Blanco</item>
+        <item>Blanco dulce</item>
+        <item>Cava</item>
+        <item>Champán</item>
+        <item>Espumoso</item>
+        <item>Generosos</item>
+        <item>Otros..</item>
+        <item>Rosado</item>
+        <item>Tinto</item>
+    </string-array>
+</resources>

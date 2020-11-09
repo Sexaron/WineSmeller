@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_aging">
+        <item>Joven</item>
+        <item>Crianza</item>
+        <item>Reserva</item>
+        <item>Gran Reserva</item>
+        <item>Otros..</item>
+    </string-array>
+</resources>
