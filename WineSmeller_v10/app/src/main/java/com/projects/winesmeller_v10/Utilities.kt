@@ -113,7 +113,7 @@ class Utilities {
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialog.titleList.setText(titleText)
 
-            if (titleText == R.string.textView_addWine_aging) {
+            if (titleText == R.string.textView_addWine_aging || titleText == R.string.textView_addWine_typeOfWine ) {
                 dialog.edit_text_searcher.isVisible = false
             }
 
@@ -153,8 +153,8 @@ class Utilities {
 
             val newList : ArrayList<String> = ArrayList<String>()
             list.forEach {
-            if (it.toLowerCase(Locale.ROOT).contains(s.toString())) {
-                    newList.add(it)
+            if (it.toLowerCase(Locale.ROOT).contains(s.toString().toLowerCase(Locale.ROOT))) {
+                newList.add(it)
                 }
             }
 

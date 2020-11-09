@@ -17,6 +17,7 @@ class AddWineActivity : AppCompatActivity() {
 //    lateinit var spinner_wine_types :
     lateinit var textView_spinner_aging        : TextView
     lateinit var textView_spinner_countries    : TextView
+    lateinit var textView_spinner_wine_types    : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -36,11 +37,11 @@ class AddWineActivity : AppCompatActivity() {
 
         textView_spinner_aging     = findViewById(R.id.text_view_spinner_aging     )
         textView_spinner_countries = findViewById(R.id.text_view_spinner_countries )
+        textView_spinner_wine_types = findViewById(R.id.text_view_spinner_wine_types )
 
-        val listCountries  : Array<out String>   = resources.getStringArray(R.array.array_countries )
-        val listAging      : Array<out String>   = resources.getStringArray(R.array.array_aging     )
-
-
+        val listCountries  : Array<out String>   = resources.getStringArray(R.array.array_countries     )
+        val listAging      : Array<out String>   = resources.getStringArray(R.array.array_aging         )
+        val listWineTypes  : Array<out String>   = resources.getStringArray(R.array.array_wine_types    )
 
         textView_spinner_aging.setOnClickListener {
             Utilities.spinnerSearch(this, listAging, R.string.textView_addWine_aging, textView_spinner_aging)
@@ -48,6 +49,10 @@ class AddWineActivity : AppCompatActivity() {
 
         textView_spinner_countries.setOnClickListener {
             Utilities.spinnerSearch(this, listCountries, R.string.textView_addWine_country, textView_spinner_countries)
+        }
+
+        textView_spinner_wine_types.setOnClickListener {
+            Utilities.spinnerSearch(this, listWineTypes, R.string.textView_addWine_typeOfWine, textView_spinner_wine_types)
         }
 
     }
