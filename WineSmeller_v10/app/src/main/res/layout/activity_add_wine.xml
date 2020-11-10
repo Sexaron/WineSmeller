@@ -77,7 +77,7 @@
                     android:text="Name" />
 
                 <Button
-                    android:id="@+id/button_scan"
+                    android:id="@+id/button_scan_code"
                     android:layout_width="97dp"
                     android:layout_height="91dp"
                     android:layout_below="@+id/editTextTextMultiLine4"
@@ -93,7 +93,7 @@
                     android:layout_below="@+id/editTextTextMultiLine4"
                     android:layout_marginStart="33dp"
                     android:layout_marginTop="22dp"
-                    android:layout_toEndOf="@+id/button_scan"
+                    android:layout_toEndOf="@+id/button_scan_code"
                     android:ems="10"
                     android:hint="@string/textView_addWine_barcode"
                     android:importantForAutofill="no"
@@ -323,7 +323,7 @@
                     android:id="@+id/button"
                     android:layout_width="186dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/button_scan"
+                    android:layout_below="@+id/button_scan_code"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="180dp"
                     android:layout_marginTop="-5dp"

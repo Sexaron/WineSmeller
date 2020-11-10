@@ -11,6 +11,9 @@ class Constants {
         val SC_USER_AUTHENTICATION  = "userAuthentication.php"
         val SC_USER_LOGIN           = "userLogin.php"
 
+            // Otros
+        val TIME_SPLASH_ACTIVITY = 2000
+
     }
 
 }

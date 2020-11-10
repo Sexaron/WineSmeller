@@ -14,6 +14,7 @@ import android.view.WindowManager
 import android.widget.*
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
+import androidx.core.graphics.toColor
 import androidx.core.view.isVisible
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.searchable_spinner.*

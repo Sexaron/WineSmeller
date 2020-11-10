@@ -12,7 +12,8 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@mipmap/nav_header_background"
         android:theme="@style/AppTheme"
-        app:theme="@style/MyCustomToolBarTheme"/>
+        app:theme="@style/MyCustomToolBarTheme"
+        app:titleTextColor="#FFFFFF"/>
 
 </FrameLayout>
 
