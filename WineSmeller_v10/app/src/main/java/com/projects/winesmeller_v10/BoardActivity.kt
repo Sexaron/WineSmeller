@@ -32,7 +32,7 @@ class BoardActivity : AppCompatActivity() {
         Utilities.showHomeButton(true, supportActionBar, R.drawable.ic_menu)
 
             // Elimina la barra de notificaciones
-        Utilities.noShowNotificationBar(this.window)
+//        Utilities.noShowNotificationBar(this.window)
 
             // Listener del menú lateral
         Utilities.setNavigationItemSelectedListener(nav_view, this )
@@ -61,7 +61,7 @@ class BoardActivity : AppCompatActivity() {
             }
 
             R.id.idOptionMenuCloseSession   -> {
-                Utilities.closeSession(this, getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE))
+                Utilities.closeSession(this, getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE), this)
             }
 
             android.R.id.home               -> {

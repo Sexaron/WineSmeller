@@ -36,7 +36,7 @@ class AddWineActivity : AppCompatActivity() {
         Utilities.showHomeButton(true, supportActionBar, R.drawable.ic_menu)
 
             // Elimina la barra de notificaciones
-        Utilities.noShowNotificationBar(this.window)
+//        Utilities.noShowNotificationBar(this.window)
 
             // Listener del menú lateral
         Utilities.setNavigationItemSelectedListener(nav_view, this)
@@ -135,7 +135,7 @@ class AddWineActivity : AppCompatActivity() {
                     this, getSharedPreferences(
                         getString(R.string.prefs_file),
                         MODE_PRIVATE
-                    )
+                    ), this
                 )
             }
 

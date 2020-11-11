@@ -1,5 +1,6 @@
 package com.projects.winesmeller_v10
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
@@ -52,7 +53,7 @@ class Utilities {
          * Permite cerrar la sesión actual.
          * Borra los parámetros de la sesión
          *************************************************************************************/
-        fun closeSession(context: Context, sharedPreferences: SharedPreferences) {
+        fun closeSession(context: Context, sharedPreferences: SharedPreferences, activity: Activity) {
             AlertDialog.Builder(context)
                 .setTitle("Confirmación")
                 .setMessage("¿Desea cerrar la sesión?")
@@ -63,6 +64,7 @@ class Utilities {
                     prefs.clear()
                     prefs.apply()
                     showAuth(context)
+                    activity.finish()
                 }.create().show()
         }
 

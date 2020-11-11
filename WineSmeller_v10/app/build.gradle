@@ -8,10 +8,10 @@ android {
 
     defaultConfig {
         applicationId "com.projects.winesmeller_v10"
-//        minSdkVersion 21
-//        targetSdkVersion 30
-        minSdkVersion 15
-        targetSdkVersion 19
+        minSdkVersion 21
+        targetSdkVersion 30
+//        minSdkVersion 18
+//        targetSdkVersion 19
         versionCode 1
         versionName "1.0"
 

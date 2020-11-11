@@ -18,22 +18,25 @@
         android:roundIcon="@mipmap/ic_wine_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-        <activity android:name=".BoardActivity" />
-        <activity android:name=".AddWineActivity"/>
-        <activity android:name=".OrientationCaptureActivity"
-            android:screenOrientation="portrait"
-            android:stateNotNeeded="true"
-            android:theme="@style/zxing_CaptureTheme"
-            android:windowSoftInputMode="stateAlwaysHidden">
-        </activity>
-        <activity android:name=".AuthActivity">
+        <activity android:name=".SplashActivity"
+            android:theme="@style/InitialSplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AuthActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".BoardActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".AddWineActivity"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".OrientationCaptureActivity"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            android:theme="@style/zxing_CaptureTheme"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
     </application>
 
 </manifest>

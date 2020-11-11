@@ -19,16 +19,14 @@ class AuthActivity : AppCompatActivity() {
     val LOG_ERROR   = "LOG_ERROR"
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
         setSupportActionBar(findViewById(R.id.my_toolbar_auth))
         setTitle(R.string.activityTitle_auth)
 
             // Elimina la barra de notificaciones
-        Utilities.noShowNotificationBar(this.window)
-
-            // Comprobar si saltar pantalla de autenticación
-        startSession()
+//        Utilities.noShowNotificationBar(this.window)
 
             // Listeners de los botones
         funSignUpAndLogIn()
@@ -87,15 +85,5 @@ class AuthActivity : AppCompatActivity() {
             putExtra("check", check)
         }
         startActivity(homeIntent)
-    }
-
-    private fun startSession() {
-
-        val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE )
-        val email = prefs.getString("email", null)
-
-        if ( email != null ) {
-            showHome(email, true)
-        }
     }
 }

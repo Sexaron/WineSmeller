@@ -25,77 +25,86 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@mipmap/splash_with_title_auth"
             android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/idEditText_Email"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="24dp"
-                android:ems="10"
-                android:hint="@string/hintEditText_email"
-                android:inputType="textEmailAddress"
-                tools:ignore="TextFields" />
-
-            <EditText
-                android:id="@+id/idEditText_Password"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="24dp"
-                android:ems="10"
-                android:hint="@string/hintEditText_password"
-                android:inputType="textPassword" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
-                <Button
-                    android:id="@+id/idButton_SignUp"
-                    android:layout_width="165dp"
+                <!--            <ImageView-->
+                <!--                android:id="@+id/idImageView_Wine"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="match_parent"-->
+                <!--                android:layout_gravity="center"-->
+                <!--                android:src="@mipmap/ic_wine_foreground" />-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:layout_weight="2">
+
+                <EditText
+                    android:id="@+id/idEditText_Email"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="24dp"
+                    android:ems="10"
+                    android:hint="@string/hintEditText_email"
+                    android:inputType="textEmailAddress"
+                    tools:ignore="TextFields" />
+
+                <EditText
+                    android:id="@+id/idEditText_Password"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:ems="10"
+                    android:hint="@string/hintEditText_password"
+                    android:inputType="textPassword" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/idButton_SignUp"
+                            android:layout_width="165dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_weight="1"
+                            android:text="@string/textButton_signUp" />
+
+                        <Button
+                            android:id="@+id/idButton_Login"
+                            android:layout_width="165dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginEnd="24dp"
+                            android:layout_weight="1"
+                            android:text="@string/textButton_login" />
+                    </LinearLayout>
+
+                <CheckBox
+                    android:id="@+id/idCheckBox_SaveCredentials"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="24dp"
-                    android:layout_weight="1"
-                    android:text="@string/textButton_signUp" />
-
-                <Button
-                    android:id="@+id/idButton_Login"
-                    android:layout_width="165dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
                     android:layout_marginEnd="24dp"
-                    android:layout_weight="1"
-                    android:text="@string/textButton_login" />
+                    android:text="@string/textCheckBox_savingCredentials" />
             </LinearLayout>
 
-            <CheckBox
-                android:id="@+id/idCheckBox_SaveCredentials"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="24dp"
-                android:text="@string/textCheckBox_savingCredentials" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/idImageView_Wine"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:src="@mipmap/ic_wine_foreground" />
         </LinearLayout>
 
     </LinearLayout>
