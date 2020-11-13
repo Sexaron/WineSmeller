@@ -44,11 +44,12 @@
 
     // Textos de activity Añadir Vino
     <string name="textView_addWine_name">Nombre</string>
-    <string name="textView_addWine_alcohol">Grados</string>
+    <string name="textView_addWine_alcohol">% vol.</string>
     <string name="textView_addWine_year">Año</string>
     <string name="textView_addWine_winery">Bodega</string>
     <string name="textView_addWine_barcode">Código de barras</string>
     <string name="textView_addWine_denominationOfOrigin">Denominación de origen</string>
+    <string name="textView_addWine_denominationOfOrigin_aux">D. de origen</string>
     <string name="textView_addWine_ecologic">Ecológico</string>
     <string name="textView_addWine_aging">Envejecimiento</string>
     <string name="textView_addWine_country">País</string>
@@ -56,6 +57,7 @@
     <string name="textView_addWine_typeOfWine">Tipo de vino</string>
     <string name="textView_addWine_rating">Puntuación</string>
     <string name="textView_addWine_notes">Notas</string>
+    <string name="textView_addWine_button">Guardar</string>
 
     // Textos a eliminar
     <string name="nombrePerfil">Pepa Martina</string>

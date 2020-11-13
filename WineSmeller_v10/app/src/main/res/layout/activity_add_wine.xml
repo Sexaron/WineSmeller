@@ -25,313 +25,459 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <RelativeLayout
                 android:id="@+id/relativeLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/linear_layout_barcode"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="17dp"
-                    android:layout_marginTop="12dp"
-                    android:text="@string/textView_addWine_name" />
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
+                    <LinearLayout
+                        android:id="@+id/linear_layout_barcode_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_weight="4">
+                        <Button
+                            android:id="@+id/button_scan_code"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="16dp"
+                            android:background="@mipmap/ic_button_scan" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/linear_layout_barcode_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_weight="2">
+                        <EditText
+                            android:id="@+id/editText_barCode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginEnd="16dp"
+                            android:hint="@string/textView_addWine_barcode"
+                            android:importantForAutofill="no"
+                            android:inputType="number"/>
+                    </LinearLayout>
+                </LinearLayout>
 
-                <EditText
-                    android:id="@+id/editTextTextPersonName"
-                    android:layout_width="242dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textView7"
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="17dp"
-                    android:layout_marginTop="-6dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Name" />
-
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/editTextTextPersonName"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/textView_addWine_winery" />
-
-                <EditText
-                    android:id="@+id/editTextTextPersonName2"
-                    android:layout_width="384dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textView8"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="-6dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Name" />
-
-                <Button
-                    android:id="@+id/button_scan_code"
-                    android:layout_width="97dp"
-                    android:layout_height="91dp"
-                    android:layout_below="@+id/editTextTextMultiLine4"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="18dp"
+                    android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
-                    android:background="@mipmap/ic_button_scan" />
-
-                <EditText
-                    android:id="@+id/editText_barCode"
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/editTextTextMultiLine4"
-                    android:layout_marginStart="33dp"
-                    android:layout_marginTop="22dp"
-                    android:layout_toEndOf="@+id/button_scan_code"
-                    android:ems="10"
-                    android:hint="@string/textView_addWine_barcode"
-                    android:importantForAutofill="no"
-                    android:inputType="number" />
-
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/editTextTextPersonName2"
+                    android:layout_below="@+id/linear_layout_barcode"
+                    android:background="@android:color/black" />
+                <View
+                    android:id="@+id/first_separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="209dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/textView_addWine_aging" />
-
-                <TextView
-                    android:id="@+id/text_view_spinner_aging"
-                    android:layout_width="173dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textView9"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_toEndOf="@+id/text_view_spinner_countries"
-                    android:background="@android:drawable/editbox_background"
-                    android:gravity="center_vertical"
-                    android:hint="@string/textView_addWine_aging"
-                    android:padding="6dp"
-                    app:drawableEndCompat="@drawable/ic_arrow" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/editTextTextPersonName2"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/textView_addWine_country" />
-
-                <TextView
-                    android:id="@+id/text_view_spinner_countries"
-                    android:layout_width="192dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textView"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:gravity="center_vertical"
-                    android:hint="@string/textView_addWine_country"
-                    android:padding="6dp"
-                    app:drawableEndCompat="@drawable/ic_arrow" />
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_view_spinner_countries"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="14dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/textView_addWine_denominationOfOrigin" />
-
-                <EditText
-                    android:id="@+id/editTextTextPersonName5"
-                    android:layout_width="240dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textView5"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="13dp"
-                    android:layout_marginTop="-1dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Name" />
-
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="205dp"
-                    android:layout_marginTop="9dp"
-                    android:layout_toEndOf="@+id/textView7"
-                    android:text="@string/textView_addWine_year" />
-
-                <EditText
-                    android:id="@+id/editTextNumber"
-                    android:layout_width="85dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textView10"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_toEndOf="@+id/editTextTextPersonName"
-                    android:ems="10"
-                    android:inputType="number" />
-
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_view_spinner_aging"
-                    android:layout_marginStart="107dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_toEndOf="@+id/textView5"
-                    android:text="@string/textView_addWine_alcohol" />
-
-                <EditText
-                    android:id="@+id/editTextNumber2"
-                    android:layout_width="91dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textView11"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_toEndOf="@+id/editTextTextPersonName5"
-                    android:ems="10"
-                    android:inputType="number" />
-
-                <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/editTextTextPersonName5"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="13dp"
-                    android:layout_marginTop="11dp"
-                    android:text="@string/textView_addWine_typeOfWine" />
-
-    <!--            <com.toptoche.searchablespinnerlibrary.SearchableSpinner-->
-    <!--                android:id="@+id/spinner_wine_types"-->
-    <!--                android:layout_width="200dp"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_below="@+id/textView12"-->
-    <!--                android:layout_alignParentStart="true"-->
-    <!--                android:layout_marginStart="6dp"-->
-    <!--                android:layout_marginTop="12dp"-->
-    <!--                android:accessibilityPaneTitle="PRUEBA"-->
-    <!--                android:tooltipText="PRUEBA 2" />-->
-
-                <TextView
-                    android:id="@+id/text_view_spinner_wine_types"
-                    android:layout_width="194dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textView12"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginTop="12dp"
-                    android:background="@android:drawable/editbox_background"
-                    android:gravity="top"
-                    android:hint="@string/textView_addWine_typeOfWine"
-                    android:padding="6dp"
-                    app:drawableEndCompat="@drawable/ic_arrow" />
-
-
-                <TextView
-                    android:id="@+id/textView13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/editTextTextPersonName5"
-                    android:layout_marginStart="3dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_toEndOf="@+id/text_view_spinner_wine_types"
-                    android:text="@string/textView_addWine_typeOfGrape" />
-
-                <EditText
-                    android:id="@+id/editTextTextMultiLine2"
-                    android:layout_width="189dp"
-                    android:layout_height="35dp"
-                    android:layout_below="@+id/textView13"
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="3dp"
-                    android:layout_toEndOf="@+id/text_view_spinner_wine_types"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:inputType="textMultiLine" />
-
-                <CheckBox
-                    android:id="@+id/checkBox"
-                    android:layout_width="wrap_content"
+                    android:layout_below="@+id/linear_layout_barcode"
+                    android:background="@android:color/black" />
+                <LinearLayout
+                    android:id="@+id/linear_layout_photo_cameras"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_view_spinner_wine_types"
+                    android:layout_below="@+id/first_separator"
+                    android:baselineAligned="false">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_weight="1">
+                        <Button
+                            android:id="@+id/front_image_of_the_wine"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:background="@mipmap/photo_camera"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_weight="1">
+                        <Button
+                            android:id="@+id/back_image_of_the_wine"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@mipmap/photo_camera"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="7dp"
-                    android:text="@string/textView_addWine_ecologic" />
-
-                <TextView
-                    android:id="@+id/textView14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/checkBox"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_below="@+id/linear_layout_photo_cameras"
+                    android:background="@android:color/black" />
+                <View
+                    android:id="@+id/second_separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="27dp"
-                    android:text="@string/textView_addWine_rating" />
-
-                <RatingBar
-                    android:id="@+id/ratingBar2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/checkBox"
-                    android:layout_marginStart="56dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_toEndOf="@+id/textView14" />
-
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_below="@+id/linear_layout_photo_cameras"
+                    android:background="@android:color/black" />
                 <TextView
-                    android:id="@+id/textView15"
+                    android:id="@+id/text_view_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/ratingBar2"
+                    android:layout_below="@+id/second_separator"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/textView_addWine_name" />
+                <EditText
+                    android:id="@+id/edit_text_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_view_name"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="-8dp"
+                    android:layout_marginEnd="16dp"
+                    android:inputType="textPersonName"
+                    android:hint="@string/textView_addWine_name"
+                    android:autofillHints="" />
+                <TextView
+                    android:id="@+id/text_view_winery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/edit_text_name"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:text="@string/textView_addWine_notes" />
-
+                    android:text="@string/textView_addWine_winery" />
                 <EditText
-                    android:id="@+id/editTextTextMultiLine4"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/edit_text_winery"
+                    android:layout_width="384dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/textView15"
+                    android:layout_below="@+id/text_view_winery"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="13dp"
-                    android:layout_marginTop="-5dp"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:inputType="textMultiLine" />
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="-8dp"
+                    android:layout_marginEnd="16dp"
+                    android:inputType="textPersonName"
+                    android:hint="@string/textView_addWine_winery"
+                    android:autofillHints="" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_data_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/edit_text_winery"
+                    android:baselineAligned="false">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                        <TextView
+                            android:id="@+id/text_view_agin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/textView_addWine_aging" />
+                        <TextView
+                            android:id="@+id/text_view_spinner_aging"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="12dp"
+                            android:background="@android:drawable/editbox_background"
+                            android:gravity="center_vertical"
+                            android:hint="@string/textView_addWine_aging"
+                            android:padding="6dp"
+                            app:drawableEndCompat="@drawable/ic_arrow" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                        <TextView
+                            android:id="@+id/text_view_countries"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/textView_addWine_country" />
+                        <TextView
+                            android:id="@+id/text_view_spinner_countries"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@android:drawable/editbox_background"
+                            android:gravity="center_vertical"
+                            android:hint="@string/textView_addWine_country"
+                            android:padding="6dp"
+                            app:drawableEndCompat="@drawable/ic_arrow" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_data_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/linear_layout_data_1"
+                    android:baselineAligned="false">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                        <TextView
+                            android:id="@+id/text_view_denomination_of_origin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/textView_addWine_denominationOfOrigin" />
+                        <EditText
+                            android:id="@+id/edit_text_denomination_of_origin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginTop="-8dp"
+                            android:inputType="textPersonName"
+                            android:hint="@string/textView_addWine_denominationOfOrigin_aux"
+                            android:autofillHints="" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_data_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/linear_layout_data_2"
+                    android:baselineAligned="false">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="15">
+                        <TextView
+                            android:id="@+id/text_view_type_of_wine"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/textView_addWine_typeOfWine" />
+                        <TextView
+                            android:id="@+id/text_view_spinner_wine_types"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="12dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@android:drawable/editbox_background"
+                            android:hint="@string/textView_addWine_typeOfWine"
+                            android:padding="6dp"
+                            app:drawableEndCompat="@drawable/ic_arrow" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="8">
+                        <TextView
+                            android:id="@+id/text_view_year"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/textView_addWine_year" />
+                        <EditText
+                            android:id="@+id/edit_text_year"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginTop="-8dp"
+                            android:hint="@string/textView_addWine_year"
+                            android:inputType="number"
+                            android:maxEms="4"
+                            android:autofillHints="" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="7">
+                        <TextView
+                            android:id="@+id/text_view_alcohol"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/textView_addWine_alcohol" />
+                        <EditText
+                            android:id="@+id/edit_text_alcohol"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginTop="-8dp"
+                            android:maxEms="4"
+                            android:inputType="numberDecimal"
+                            android:hint="@string/textView_addWine_alcohol"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_data_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_below="@+id/linear_layout_data_3">
+                    <TextView
+                        android:id="@+id/text_view_type_of_grape"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/textView_addWine_typeOfGrape" />
+                    <EditText
+                        android:id="@+id/edit_text_type_of_grape"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginTop="-8dp"
+                        android:inputType="textMultiLine"
+                        android:hint="@string/textView_addWine_typeOfGrape"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_data_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/linear_layout_data_4">
+                    <CheckBox
+                        android:id="@+id/checkBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/textView_addWine_ecologic" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_data_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_below="@+id/linear_layout_data_5">
+                    <TextView
+                        android:id="@+id/text_view_notes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/textView_addWine_notes" />
+                    <EditText
+                        android:id="@+id/edit_text_notes"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginTop="-8dp"
+                        android:inputType="textMultiLine"
+                        android:hint="@string/textView_addWine_notes"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/linear_layout_data_6"
+                    android:background="@android:color/black" />
+                <View
+                    android:id="@+id/third_separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="11dp"
+                    android:layout_below="@+id/linear_layout_data_6"
+                    android:background="@android:color/black" />
+
+                <LinearLayout
+                    android:id="@+id/linear_layout_rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/third_separator">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_weight="1">
+                        <TextView
+                            android:id="@+id/text_view_rating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="@string/textView_addWine_rating" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_weight="3">
+                        <RatingBar
+                            android:id="@+id/raitingbar_rating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"/>
+                    </LinearLayout>
+                </LinearLayout>
 
                 <Button
-                    android:id="@+id/button"
-                    android:layout_width="186dp"
+                    android:id="@+id/button_add_wine"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/button_scan_code"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="180dp"
-                    android:layout_marginTop="-5dp"
-                    android:text="Button" />
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="24dp"
+                    android:layout_below="@id/linear_layout_rating"
+                    android:text="@string/textView_addWine_button" />
 
             </RelativeLayout>
         </ScrollView>
-
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView

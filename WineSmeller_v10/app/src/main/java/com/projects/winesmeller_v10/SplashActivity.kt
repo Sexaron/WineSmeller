@@ -11,9 +11,13 @@ import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.animation.AnimationUtils.loadAnimation
+import android.widget.ImageView
 import android.widget.TextView
 
 class SplashActivity : AppCompatActivity() {
+
+    lateinit var title : ImageView
+    lateinit var letters : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -23,11 +27,20 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        // Creando animación inicial
+        val animationTitle = AnimationUtils.loadAnimation(this, R.anim.frombottom)
+        title = findViewById(R.id.splash_title_text)
+        title.startAnimation(animationTitle)
+
+        val animationLetters = AnimationUtils.loadAnimation(this, R.anim.fromtop)
+        letters = findViewById(R.id.splash_letters_text)
+        letters.startAnimation(animationLetters)
+
             //Llamamos al método postDelayed
         Handler(Looper.getMainLooper()).postDelayed({
                 // Comprobar si saltar pantalla de autenticación
             startSession()
-        }, 2000)
+        }, 3000)
     }
 
         // Comrpueba si se cerró la app guardando los credenciales o no.
