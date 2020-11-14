@@ -10,9 +10,10 @@ class Constants {
             //Script names
         val SC_USER_AUTHENTICATION  = "userAuthentication.php"
         val SC_USER_LOGIN           = "userLogin.php"
+        val SC_ADD_WINE             = "addWine.php"
 
             // Otros
-        val TIME_SPLASH_ACTIVITY = 2000
+        val TIME_SPLASH_ACTIVITY = 3000L
 
     }
 

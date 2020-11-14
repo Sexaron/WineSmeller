@@ -1,6 +1,5 @@
 package com.projects.winesmeller_v10
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -40,7 +39,7 @@ class AuthActivity : AppCompatActivity() {
             val password    = idEditText_Password.text.toString()
             val checkBox= findViewById<CheckBox>(R.id.idCheckBox_SaveCredentials)
 
-            accessSignUpAndLogIn("${Constants.URL_SERVER}/${Constants.SC_USER_AUTHENTICATION}?email=$email&password=$password", email, checkBox.isChecked )
+            accessSignUpAndLogIn_BBDD("${Constants.URL_SERVER}/${Constants.SC_USER_AUTHENTICATION}?email=$email&password=$password", email, checkBox.isChecked )
         }
 
         idButton_Login.setOnClickListener {
@@ -48,11 +47,11 @@ class AuthActivity : AppCompatActivity() {
             val password    = idEditText_Password.text.toString()
             val checkBox= findViewById<CheckBox>(R.id.idCheckBox_SaveCredentials)
 
-            accessSignUpAndLogIn("${Constants.URL_SERVER}/${Constants.SC_USER_LOGIN}?email=$email&password=$password", email, checkBox.isChecked)
+            accessSignUpAndLogIn_BBDD("${Constants.URL_SERVER}/${Constants.SC_USER_LOGIN}?email=$email&password=$password", email, checkBox.isChecked)
         }
     }
 
-    private fun accessSignUpAndLogIn(URL: String, email: String, check: Boolean) {
+    private fun accessSignUpAndLogIn_BBDD(URL: String, email: String, check: Boolean) {
 
         var resultado       : Any   = ""
         var message         : Any   = ""

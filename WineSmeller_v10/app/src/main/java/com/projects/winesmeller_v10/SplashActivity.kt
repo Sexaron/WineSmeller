@@ -40,7 +40,7 @@ class SplashActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
                 // Comprobar si saltar pantalla de autenticación
             startSession()
-        }, 3000)
+        }, Constants.TIME_SPLASH_ACTIVITY)
     }
 
         // Comrpueba si se cerró la app guardando los credenciales o no.

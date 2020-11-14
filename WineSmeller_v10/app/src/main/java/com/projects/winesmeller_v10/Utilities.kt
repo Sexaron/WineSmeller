@@ -7,12 +7,16 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.text.Editable
+import android.text.Layout
 import android.text.TextWatcher
+import android.util.DisplayMetrics
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.core.graphics.toColor
@@ -77,6 +81,14 @@ class Utilities {
         }
 
         /*************************************************************************************
+         * Navega a la pantalla de Home
+         *************************************************************************************/
+        fun showHome(context: Context) {
+            val loginIntent = Intent(context, BoardActivity::class.java)
+            context.startActivity(loginIntent)
+        }
+
+        /*************************************************************************************
          * Listener del menú lateral
          *************************************************************************************/
         fun setNavigationItemSelectedListener( nav_view: NavigationView, context : Context ) {
@@ -105,14 +117,24 @@ class Utilities {
          *************************************************************************************/
         fun spinnerSearch (
             context: Context,
+            activity: Activity,
             list: Array<out String>,
             titleText: Int,
             textView : TextView
         ) {
             val dialog = Dialog(context)
 
+                // Obtenemos medidas de la pantalla
+            val metrics = DisplayMetrics()
+//            activity.display?.getRealMetrics(metrics) //-> Para APIs mas nuevas
+            activity.windowManager.defaultDisplay.getRealMetrics(metrics)   // -> Para APIs más viejas
+
+                //Puede que este cálculo para móviles con versiones más viejas no funcione.
+            val width = (metrics.widthPixels / 1.20).toInt()
+            val height = (metrics.heightPixels / 1.20).toInt()
+
             dialog.setContentView(R.layout.searchable_spinner)
-            dialog.window?.setLayout(650, 800)
+            dialog.window?.setLayout( width  , height )
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialog.titleList.setText(titleText)
 
