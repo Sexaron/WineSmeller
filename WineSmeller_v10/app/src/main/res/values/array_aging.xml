@@ -2,6 +2,7 @@
 <resources>
     <string-array name="array_aging">
         <item>Joven</item>
+        <item>Roble</item>
         <item>Crianza</item>
         <item>Reserva</item>
         <item>Gran Reserva</item>

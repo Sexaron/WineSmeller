@@ -47,7 +47,19 @@ class AuthActivity : AppCompatActivity() {
             val password    = idEditText_Password.text.toString()
             val checkBox= findViewById<CheckBox>(R.id.idCheckBox_SaveCredentials)
 
-            accessSignUpAndLogIn_BBDD("${Constants.URL_SERVER}/${Constants.SC_USER_LOGIN}?email=$email&password=$password", email, checkBox.isChecked)
+
+            /**
+             * TODELETE: ESTE IF DEJANDO SOLO EL ELSE CUANDO SE DEJEN DE HACER PRUEBAS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+             */
+            if ( email == "x" && password == "x") {
+                showHome(email, checkBox.isChecked)
+            } else {
+                accessSignUpAndLogIn_BBDD(
+                    "${Constants.URL_SERVER}/${Constants.SC_USER_LOGIN}?email=$email&password=$password",
+                    email,
+                    checkBox.isChecked
+                )
+            }
         }
     }
 

@@ -11,6 +11,8 @@ class Constants {
         val SC_USER_AUTHENTICATION  = "userAuthentication.php"
         val SC_USER_LOGIN           = "userLogin.php"
         val SC_ADD_WINE             = "addWine.php"
+        val SC_EXIST_BARCODE        = "existBarcode.php"
+        val SC_GET_FILLS_BY_BARCODE = "getFillsByBarcode.php"
 
             // Otros
         val TIME_SPLASH_ACTIVITY = 3000L
