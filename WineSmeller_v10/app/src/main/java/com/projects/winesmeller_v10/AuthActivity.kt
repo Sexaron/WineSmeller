@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.animation.AnimationUtils
 import android.widget.CheckBox
+import android.widget.ImageView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_auth.*
 import com.android.volley.toolbox.JsonObjectRequest
@@ -17,12 +19,21 @@ class AuthActivity : AppCompatActivity() {
     val LOG_INFO    = "LOG_INFO"
     val LOG_ERROR   = "LOG_ERROR"
 
+    lateinit var title : ImageView
+    lateinit var letters : ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
         setSupportActionBar(findViewById(R.id.my_toolbar_auth))
         setTitle(R.string.activityTitle_auth)
+
+        val animationTitle = AnimationUtils.loadAnimation(this, R.anim.alpha)
+        title = findViewById(R.id.title_text)
+        title.startAnimation(animationTitle)
+        title = findViewById(R.id.letters_text)
+        title.startAnimation(animationTitle)
 
             // Elimina la barra de notificaciones
 //        Utilities.noShowNotificationBar(this.window)

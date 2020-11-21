@@ -27,13 +27,31 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@mipmap/splash_with_title_auth"
+            android:background="@mipmap/background_auth"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:orientation="vertical"
+                android:gravity="center"
                 android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/letters_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@mipmap/wine_smeller_letters_edit" />
+
+                <ImageView
+                    android:id="@+id/title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@mipmap/wine_smeller_title_edit" />
 
                 <!--            <ImageView-->
                 <!--                android:id="@+id/idImageView_Wine"-->
