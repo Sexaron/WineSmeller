@@ -32,8 +32,8 @@ class AuthActivity : AppCompatActivity() {
         val animationTitle = AnimationUtils.loadAnimation(this, R.anim.alpha)
         title = findViewById(R.id.title_text)
         title.startAnimation(animationTitle)
-        title = findViewById(R.id.letters_text)
-        title.startAnimation(animationTitle)
+        letters = findViewById(R.id.letters_text)
+        letters.startAnimation(animationTitle)
 
             // Elimina la barra de notificaciones
 //        Utilities.noShowNotificationBar(this.window)

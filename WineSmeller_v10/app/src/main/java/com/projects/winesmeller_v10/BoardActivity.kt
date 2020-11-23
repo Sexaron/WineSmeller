@@ -1,19 +1,12 @@
 package com.projects.winesmeller_v10
 
-import android.app.Dialog
 import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.*
-import android.widget.*
 import androidx.core.view.GravityCompat
-import kotlinx.android.synthetic.main.activity_board.drawer_layout_add_wine
-import kotlinx.android.synthetic.main.activity_board.nav_view
-import kotlinx.android.synthetic.main.searchable_spinner.*
+import kotlinx.android.synthetic.main.activity_board.*
 
 class BoardActivity : AppCompatActivity() {
 
@@ -39,6 +32,9 @@ class BoardActivity : AppCompatActivity() {
 
             // Guardar sesión
         saveSession()
+
+            // Llamada a la función del botón flotante
+        floatButtonAction()
 
     }
 
@@ -88,6 +84,17 @@ class BoardActivity : AppCompatActivity() {
             prefs.putString("email", email)
             prefs.putBoolean("check", check)
             prefs.apply()
+        }
+    }
+
+    /*************************************************************************************
+     * Implementación del botón flotante de la pantalla
+     *************************************************************************************/
+
+    private fun floatButtonAction() {
+
+        floatingActionButton.setOnClickListener {
+            Utilities.showAddWine( this )
         }
     }
 }

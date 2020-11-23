@@ -7,19 +7,15 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.text.Editable
-import android.text.Layout
 import android.text.TextWatcher
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.*
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
-import androidx.core.graphics.toColor
 import androidx.core.view.isVisible
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.searchable_spinner.*
@@ -87,6 +83,15 @@ class Utilities {
             val loginIntent = Intent(context, BoardActivity::class.java)
             context.startActivity(loginIntent)
         }
+
+        /*************************************************************************************
+         * Navega a la pantalla de añadir nuevo vino
+         *************************************************************************************/
+        fun showAddWine( context: Context) {
+            val loginIntent = Intent(context, AddWineActivity::class.java)
+            context.startActivity(loginIntent)
+        }
+
 
         /*************************************************************************************
          * Listener del menú lateral

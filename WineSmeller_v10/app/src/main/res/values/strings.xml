@@ -59,6 +59,10 @@
     <string name="textView_addWine_notes">Notas</string>
     <string name="textView_addWine_button">Guardar</string>
 
+    // Otros
+    <string name="textView_cancel">Cancelado</string>
+
+
     // Textos a eliminar
     <string name="nombrePerfil">Pepa Martina</string>
     <string name="emailPerfil">PepaMartina@gmail.com</string>

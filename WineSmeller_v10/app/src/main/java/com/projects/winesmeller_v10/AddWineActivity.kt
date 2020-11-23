@@ -206,7 +206,7 @@ class AddWineActivity : AppCompatActivity() {
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         if (result != null) {
             if (result.contents == null) {
-                Toast.makeText(this, "cancelled", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.textView_cancel, Toast.LENGTH_SHORT).show()
             } else {
                 Log.d("AddWineActivity", "Scanned")
 //                Toast.makeText(this, "Scanned -> " + result.contents, Toast.LENGTH_SHORT).show()
