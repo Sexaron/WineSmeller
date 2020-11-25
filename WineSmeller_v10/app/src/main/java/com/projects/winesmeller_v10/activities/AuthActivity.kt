@@ -1,4 +1,4 @@
-package com.projects.winesmeller_v10
+package com.projects.winesmeller_v10.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +11,8 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_auth.*
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.projects.winesmeller_v10.others.Constants
+import com.projects.winesmeller_v10.R
 import org.json.JSONObject
 
 class AuthActivity : AppCompatActivity() {

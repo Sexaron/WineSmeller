@@ -5,7 +5,7 @@
     android:id="@+id/drawer_layout_add_wine"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BoardActivity"
+    tools:context=".activities.BoardActivity"
     tools:openDrawer="start">
 
     <LinearLayout
@@ -18,7 +18,7 @@
 
         <fragment
             android:id="@+id/action_bar_fragment"
-            android:name="com.projects.winesmeller_v10.ActionBarFragment"
+            android:name="com.projects.winesmeller_v10.activities.ActionBarFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout="@layout/fragment_action_bar" />

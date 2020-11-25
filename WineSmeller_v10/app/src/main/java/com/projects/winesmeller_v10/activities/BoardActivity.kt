@@ -1,11 +1,12 @@
-package com.projects.winesmeller_v10
+package com.projects.winesmeller_v10.activities
 
 import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.*
 import androidx.core.view.GravityCompat
+import com.projects.winesmeller_v10.R
+import com.projects.winesmeller_v10.others.Utilities
 import kotlinx.android.synthetic.main.activity_board.*
 
 class BoardActivity : AppCompatActivity() {
@@ -28,7 +29,7 @@ class BoardActivity : AppCompatActivity() {
 //        Utilities.noShowNotificationBar(this.window)
 
             // Listener del menú lateral
-        Utilities.setNavigationItemSelectedListener(nav_view, this )
+        Utilities.setNavigationItemSelectedListener(nav_view, this)
 
             // Guardar sesión
         saveSession()
@@ -52,12 +53,12 @@ class BoardActivity : AppCompatActivity() {
 
         when (id) {
 
-            R.id.idOptionMenuSettings       -> {
+            R.id.idOptionMenuSettings -> {
                 return true
             }
 
-            R.id.idOptionMenuCloseSession   -> {
-                Utilities.closeSession(this, getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE), this)
+            R.id.idOptionMenuCloseSession -> {
+                Utilities.closeSession(this, getSharedPreferences(getString(R.string.prefs_file), MODE_PRIVATE), this)
             }
 
             android.R.id.home               -> {
@@ -94,7 +95,7 @@ class BoardActivity : AppCompatActivity() {
     private fun floatButtonAction() {
 
         floatingActionButton.setOnClickListener {
-            Utilities.showAddWine( this )
+            Utilities.showAddWine(this)
         }
     }
 }

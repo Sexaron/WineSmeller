@@ -1,4 +1,4 @@
-package com.projects.winesmeller_v10
+package com.projects.winesmeller_v10.activities
 
 import android.content.Context
 import android.content.Intent
@@ -6,13 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.View
-import android.view.WindowManager
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.view.animation.AnimationUtils.loadAnimation
 import android.widget.ImageView
-import android.widget.TextView
+import com.projects.winesmeller_v10.others.Constants
+import com.projects.winesmeller_v10.R
+import com.projects.winesmeller_v10.others.Utilities
 
 class SplashActivity : AppCompatActivity() {
 

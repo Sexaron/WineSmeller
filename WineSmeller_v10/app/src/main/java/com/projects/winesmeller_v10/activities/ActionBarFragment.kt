@@ -1,8 +1,9 @@
-package com.projects.winesmeller_v10
+package com.projects.winesmeller_v10.activities
 
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import com.projects.winesmeller_v10.R
 
 /**
  * A simple [Fragment] subclass.

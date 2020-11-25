@@ -1,4 +1,4 @@
-package com.projects.winesmeller_v10
+package com.projects.winesmeller_v10.others
 
 import android.app.Activity
 import android.app.Dialog
@@ -18,6 +18,10 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import com.google.android.material.navigation.NavigationView
+import com.projects.winesmeller_v10.R
+import com.projects.winesmeller_v10.activities.AddWineActivity
+import com.projects.winesmeller_v10.activities.AuthActivity
+import com.projects.winesmeller_v10.activities.BoardActivity
 import kotlinx.android.synthetic.main.searchable_spinner.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -57,9 +61,9 @@ class Utilities {
             AlertDialog.Builder(context)
                 .setTitle("Confirmación")
                 .setMessage("¿Desea cerrar la sesión?")
-                .setPositiveButton(R.string.textButton_cancel){dialog, which ->
+                .setPositiveButton(R.string.textButton_cancel){ dialog, which ->
                 }
-                .setNegativeButton(R.string.textButton_confirm) {dialog, which ->
+                .setNegativeButton(R.string.textButton_confirm) { dialog, which ->
                     val prefs = sharedPreferences.edit()
                     prefs.clear()
                     prefs.apply()
@@ -143,7 +147,7 @@ class Utilities {
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialog.titleList.setText(titleText)
 
-            if (titleText == R.string.textView_addWine_aging || titleText == R.string.textView_addWine_typeOfWine ) {
+            if (titleText == R.string.textView_addWine_aging || titleText == R.string.textView_addWine_typeOfWine) {
                 dialog.edit_text_searcher.isVisible = false
             }
 

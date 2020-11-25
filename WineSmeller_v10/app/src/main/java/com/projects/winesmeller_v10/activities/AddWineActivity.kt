@@ -1,22 +1,14 @@
-package com.projects.winesmeller_v10
+package com.projects.winesmeller_v10.activities
 
-import android.annotation.SuppressLint
-import android.app.ActionBar
 import android.app.Activity
 import android.content.ContentValues
-import android.content.Context
-import android.content.ContextWrapper
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
-import android.media.Image
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.Environment
-import android.provider.ContactsContract
 import android.provider.MediaStore
 import android.util.Log
 import android.view.Menu
@@ -24,19 +16,16 @@ import android.view.MenuItem
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import androidx.core.view.updateLayoutParams
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.zxing.integration.android.IntentIntegrator
-import kotlinx.android.synthetic.main.activity_add_wine.*
-import kotlinx.android.synthetic.main.activity_board.*
+import com.projects.winesmeller_v10.others.Constants
+import com.projects.winesmeller_v10.others.OrientationCaptureActivity
+import com.projects.winesmeller_v10.R
+import com.projects.winesmeller_v10.others.Utilities
 import kotlinx.android.synthetic.main.activity_board.drawer_layout_add_wine
 import kotlinx.android.synthetic.main.activity_board.nav_view
 import org.json.JSONObject
-import java.io.File
-import java.io.FileOutputStream
-import java.io.OutputStream
-import java.lang.Exception
 import java.util.*
 
 

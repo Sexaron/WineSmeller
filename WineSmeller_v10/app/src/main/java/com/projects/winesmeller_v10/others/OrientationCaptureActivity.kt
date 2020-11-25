@@ -1,4 +1,4 @@
-package com.projects.winesmeller_v10
+package com.projects.winesmeller_v10.others
 
 import com.journeyapps.barcodescanner.CaptureActivity
 
