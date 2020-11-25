@@ -97,7 +97,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:layout_weight="1">
-                        <Button
+                        <ImageView
                             android:id="@+id/front_image_of_the_wine"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
@@ -108,11 +108,10 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:layout_weight="1">
-                        <Button
+                        <ImageView
                             android:id="@+id/back_image_of_the_wine"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:layout_gravity="center_horizontal"
                             android:background="@mipmap/photo_camera"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -289,6 +288,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="8dp"
                             android:text="@string/textView_addWine_typeOfWine" />
+
                         <TextView
                             android:id="@+id/text_view_spinner_wine_types"
                             android:layout_width="match_parent"

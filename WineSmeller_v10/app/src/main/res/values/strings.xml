@@ -59,6 +59,11 @@
     <string name="textView_addWine_notes">Notas</string>
     <string name="textView_addWine_button">Guardar</string>
 
+    // Cámara
+    <string name="text_no_permissions_camera">No puedes acceder a la cámara</string>
+    <string name="text_new_image">Nueva captura</string>
+
+
     // Otros
     <string name="textView_cancel">Cancelado</string>
 

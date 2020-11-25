@@ -1,13 +1,30 @@
 package com.projects.winesmeller_v10
 
+import android.annotation.SuppressLint
+import android.app.ActionBar
+import android.app.Activity
+import android.content.ContentValues
+import android.content.Context
+import android.content.ContextWrapper
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import android.media.Image
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.ContactsContract
+import android.provider.MediaStore
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.core.view.updateLayoutParams
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.zxing.integration.android.IntentIntegrator
@@ -16,6 +33,10 @@ import kotlinx.android.synthetic.main.activity_board.*
 import kotlinx.android.synthetic.main.activity_board.drawer_layout_add_wine
 import kotlinx.android.synthetic.main.activity_board.nav_view
 import org.json.JSONObject
+import java.io.File
+import java.io.FileOutputStream
+import java.io.OutputStream
+import java.lang.Exception
 import java.util.*
 
 
@@ -54,6 +75,13 @@ class AddWineActivity : AppCompatActivity() {
     lateinit var typeOfWine : TextView
     lateinit var ranting    : RatingBar
 
+        // Cámara
+    lateinit var img_photo_front : ImageView
+    lateinit var img_photo_back : ImageView
+    var drawable : Drawable? = null
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -78,6 +106,60 @@ class AddWineActivity : AppCompatActivity() {
 
         saveData()
 
+        openCamera_Click()
+
+    }
+
+    /*************************************************************************************
+     * Implementación de cámara
+     *************************************************************************************/
+    private fun openCamera_Click() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            if(checkSelfPermission(android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED
+                    || checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)  == PackageManager.PERMISSION_DENIED ) {
+                // Pedir permiso al usuario
+                val permissionCamera = arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                requestPermissions(permissionCamera, Constants.REQUEST_CAMERA_FRONT_PHOTO)
+            } else {
+                waitingClickToPhoto()
+            }
+
+        } else {
+            waitingClickToPhoto()
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            Constants.REQUEST_CAMERA_FRONT_PHOTO -> {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                    waitingClickToPhoto()
+                else
+                    Toast.makeText(this, R.string.text_no_permissions_camera, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    /*************************************************************************************
+     * Abre la cámara del dispositivo
+     *************************************************************************************/
+    private fun waitingClickToPhoto() {
+        img_photo_front = findViewById(R.id.front_image_of_the_wine)
+        img_photo_front.setOnClickListener {
+            val value = ContentValues()
+            value.put(MediaStore.Images.Media.TITLE, R.string.text_new_image)
+            val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivityForResult(cameraIntent, Constants.REQUEST_CAMERA_FRONT_PHOTO)
+        }
+
+        img_photo_back = findViewById(R.id.back_image_of_the_wine)
+        img_photo_back.setOnClickListener {
+            val value = ContentValues()
+            value.put(MediaStore.Images.Media.TITLE, R.string.text_new_image)
+            val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivityForResult(cameraIntent, Constants.REQUEST_CAMERA_BACK_PHOTO)
+        }
     }
 
     /*************************************************************************************
@@ -120,10 +202,10 @@ class AddWineActivity : AppCompatActivity() {
 
             R.id.idOptionMenuCloseSession -> {
                 Utilities.closeSession(
-                    this, getSharedPreferences(
+                        this, getSharedPreferences(
                         getString(R.string.prefs_file),
                         MODE_PRIVATE
-                    ), this
+                ), this
                 )
             }
 
@@ -150,31 +232,31 @@ class AddWineActivity : AppCompatActivity() {
 
         textView_spinner_aging.setOnClickListener {
             Utilities.spinnerSearch(
-                this,
-                this,
-                listAging,
-                R.string.textView_addWine_aging,
-                textView_spinner_aging
+                    this,
+                    this,
+                    listAging,
+                    R.string.textView_addWine_aging,
+                    textView_spinner_aging
             )
         }
 
         textView_spinner_countries.setOnClickListener {
             Utilities.spinnerSearch(
-                this,
-                this,
-                listCountries,
-                R.string.textView_addWine_country,
-                textView_spinner_countries
+                    this,
+                    this,
+                    listCountries,
+                    R.string.textView_addWine_country,
+                    textView_spinner_countries
             )
         }
 
         textView_spinner_wine_types.setOnClickListener {
             Utilities.spinnerSearch(
-                this,
-                this,
-                listWineTypes,
-                R.string.textView_addWine_typeOfWine,
-                textView_spinner_wine_types
+                    this,
+                    this,
+                    listWineTypes,
+                    R.string.textView_addWine_typeOfWine,
+                    textView_spinner_wine_types
             )
         }
     }
@@ -200,22 +282,48 @@ class AddWineActivity : AppCompatActivity() {
     }
 
     /*************************************************************************************
-     * Resultados del Scann
+     * Resultados según el requestCode que le llegue:
+     *  - Scanner
+     *  - Cámara
      ***********************************************************************************/
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-        if (result != null) {
-            if (result.contents == null) {
-                Toast.makeText(this, R.string.textView_cancel, Toast.LENGTH_SHORT).show()
-            } else {
-                Log.d("AddWineActivity", "Scanned")
-//                Toast.makeText(this, "Scanned -> " + result.contents, Toast.LENGTH_SHORT).show()
-//                textView_scan_code.text = String.format("Scanned Result: %s", result)
-                textView_scan_code.text = result.contents
-                fillFieldsByBarcode(result.contents, "${Constants.URL_SERVER}/${Constants.SC_GET_FILLS_BY_BARCODE}")
+
+        when (requestCode) {
+
+            Constants.REQUEST_SCAN -> {
+                if (result != null) {
+                    if (result.contents == null) {
+                        Toast.makeText(this, R.string.textView_cancel, Toast.LENGTH_SHORT).show()
+                    } else {
+                        textView_scan_code.text = result.contents
+                        fillFieldsByBarcode(result.contents, "${Constants.URL_SERVER}/${Constants.SC_GET_FILLS_BY_BARCODE}")
+                    }
+                }
             }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data)
+
+            Constants.REQUEST_CAMERA_FRONT_PHOTO -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    val photo = data?.extras?.get("data") as Bitmap
+                    val photoScaled = Bitmap.createScaledBitmap(photo,315,560,false)
+                    drawable = BitmapDrawable(resources, photoScaled)
+                    img_photo_front.background = drawable
+                    val params : LinearLayout.LayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT )
+                    img_photo_front.layoutParams = params
+                }
+            }
+
+            Constants.REQUEST_CAMERA_BACK_PHOTO -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    val photo = data?.extras?.get("data") as Bitmap
+                    val photoScaled = Bitmap.createScaledBitmap(photo,315,560,false)
+                    drawable = BitmapDrawable(resources, photoScaled)
+                    img_photo_back.background = drawable
+                    val params : LinearLayout.LayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT )
+                    img_photo_back.layoutParams = params
+                }
+            }
         }
     }
 
@@ -249,7 +357,7 @@ class AddWineActivity : AppCompatActivity() {
 
                     // consultamos en BBDD si el barcode existe
                 existBarcode("${Constants.URL_SERVER}/${Constants.SC_EXIST_BARCODE}", barcodeST, nameST, wineryST, agingST, countryST,
-                    denOfOriginST, wineTypeST, yearST, volST, grapeTypeST, ecologicST, notesST, rantingST )
+                        denOfOriginST, wineTypeST, yearST, volST, grapeTypeST, ecologicST, notesST, rantingST)
             } else {
                 // TODO : Guardar el vino en la bodega del usuario
                 Utilities.showHome(this)
@@ -261,48 +369,48 @@ class AddWineActivity : AppCompatActivity() {
      * Acceso a la BBDD para consultar si existe el barcode del vino introducido
      ***********************************************************************************/
     private fun existBarcode(
-        URL: String,
-        barcodeST: String,
-        nameST: String,
-        wineryST: String,
-        agingST: String,
-        countryST: String,
-        denOfOriginST: String,
-        wineTypeST: String,
-        yearST: String,
-        volST: String,
-        grapeTypeST: String,
-        ecologicST: String,
-        notesST: String,
-        rantingST: String
+            URL: String,
+            barcodeST: String,
+            nameST: String,
+            wineryST: String,
+            agingST: String,
+            countryST: String,
+            denOfOriginST: String,
+            wineTypeST: String,
+            yearST: String,
+            volST: String,
+            grapeTypeST: String,
+            ecologicST: String,
+            notesST: String,
+            rantingST: String
     ) {
         var resultado       : Any   = ""
         var message         : Any   = ""
 
         val URL_TO_SEND : String = URL + "?barcode=${barcodeST}"
 
-        val request = JsonObjectRequest( URL_TO_SEND, null, { response ->
+        val request = JsonObjectRequest(URL_TO_SEND, null, { response ->
             Log.i(LOG_INFO, "Response is: $response")
-            val jsonRQ : JSONObject = JSONObject(response.toString())
-            resultado   = jsonRQ.get("Success")
-            message     = jsonRQ.get("Message")
+            val jsonRQ: JSONObject = JSONObject(response.toString())
+            resultado = jsonRQ.get("Success")
+            message = jsonRQ.get("Message")
 
-            if ( resultado.toString() == "OK") {
+            if (resultado.toString() == "OK") {
 //                Toast.makeText(this, "$message", Toast.LENGTH_LONG).show()
                 // TODO : Guardar el vino en la bodega del usuario
                 Utilities.showHome(this)
             } else {
 //                Toast.makeText(this, "$message", Toast.LENGTH_LONG).show()
                 // TODO : Guardar el vino en la bodega del usuario
-                addWine_BBDD( "${Constants.URL_SERVER}/${Constants.SC_ADD_WINE}",
-                    barcodeST, nameST, wineryST, agingST, countryST, denOfOriginST, wineTypeST, yearST, volST, grapeTypeST, ecologicST, notesST, rantingST)
+                addWine_BBDD("${Constants.URL_SERVER}/${Constants.SC_ADD_WINE}",
+                        barcodeST, nameST, wineryST, agingST, countryST, denOfOriginST, wineTypeST, yearST, volST, grapeTypeST, ecologicST, notesST, rantingST)
             }
         }, { error ->
-            Log.e (LOG_ERROR, error.toString())
+            Log.e(LOG_ERROR, error.toString())
             error.printStackTrace()
         })
 
-        val queue = Volley.newRequestQueue(this )
+        val queue = Volley.newRequestQueue(this)
         queue.add(request)
     }
 
@@ -310,20 +418,20 @@ class AddWineActivity : AppCompatActivity() {
      * Acceso a la BBDD para guardar el nuevo Vino con todos los datos pasados por parámetro
      ***********************************************************************************/
     private fun addWine_BBDD(
-        URL: String,
-        barcode: String,
-        name: String,
-        winery: String,
-        aging: String,
-        country: String,
-        denOfOrigin: String,
-        wineType: String,
-        year: String,
-        vol: String,
-        grapeType: String,
-        ecologic: String,
-        notes: String,
-        ranting: String
+            URL: String,
+            barcode: String,
+            name: String,
+            winery: String,
+            aging: String,
+            country: String,
+            denOfOrigin: String,
+            wineType: String,
+            year: String,
+            vol: String,
+            grapeType: String,
+            ecologic: String,
+            notes: String,
+            ranting: String
     ) {
         var resultado       : Any   = ""
         var message         : Any   = ""
@@ -332,54 +440,54 @@ class AddWineActivity : AppCompatActivity() {
                 "barcode=${barcode}&denOfOrigin=${denOfOrigin}&ecologic=${ecologic}&aging=${aging}&" +
                 "country=${country}&grapeType=${grapeType}&wineType=${wineType}&ranting=${ranting}&notes=${notes}"
 
-        val request = JsonObjectRequest( URL_TO_SEND, null, { response ->
+        val request = JsonObjectRequest(URL_TO_SEND, null, { response ->
             Log.i(LOG_INFO, "Response is: $response")
-            val jsonRQ : JSONObject = JSONObject(response.toString())
-            resultado   = jsonRQ.get("Success")
-            message     = jsonRQ.get("Message")
+            val jsonRQ: JSONObject = JSONObject(response.toString())
+            resultado = jsonRQ.get("Success")
+            message = jsonRQ.get("Message")
 
-            if ( resultado.toString() == "OK") {
+            if (resultado.toString() == "OK") {
                 Toast.makeText(this, "$message", Toast.LENGTH_LONG).show()
                 Utilities.showHome(this)
             } else {
                 Toast.makeText(this, "$message", Toast.LENGTH_LONG).show()
             }
         }, { error ->
-            Log.e (LOG_ERROR, error.toString())
+            Log.e(LOG_ERROR, error.toString())
             error.printStackTrace()
         })
 
-        val queue = Volley.newRequestQueue(this )
+        val queue = Volley.newRequestQueue(this)
         queue.add(request)
     }
 
     /*************************************************************************************
      * Acceso a la BBDD para obtener todos los datos del vino en el caso de que exista en BBDD
      ***********************************************************************************/
-    private fun fillFieldsByBarcode(barcode: String, URL : String) {
+    private fun fillFieldsByBarcode(barcode: String, URL: String) {
         var resultado       : Any   = ""
 
         val URL_TO_SEND : String = URL + "?barcode=$barcode"
 
-        val request = JsonObjectRequest( URL_TO_SEND, null, { response ->
+        val request = JsonObjectRequest(URL_TO_SEND, null, { response ->
             Log.i(LOG_INFO, "Response is: $response")
-            val jsonRQ : JSONObject = JSONObject(response.toString())
-            resultado       = jsonRQ.get("Success")
+            val jsonRQ: JSONObject = JSONObject(response.toString())
+            resultado = jsonRQ.get("Success")
 
-            if ( resultado.toString() == "OK") {
+            if (resultado.toString() == "OK") {
 //                Toast.makeText(this, "$message", Toast.LENGTH_LONG).show()
-                val array : JSONObject  = jsonRQ.getJSONObject("0")
+                val array: JSONObject = jsonRQ.getJSONObject("0")
                 fillAllFields(array)
             } else {
 //                Toast.makeText(this, "$message", Toast.LENGTH_LONG).show()
                 // No existe el barcode en BBDD. Por lo tanto no rellena campos
             }
         }, { error ->
-            Log.e (LOG_ERROR, error.toString())
+            Log.e(LOG_ERROR, error.toString())
             error.printStackTrace()
         })
 
-        val queue = Volley.newRequestQueue(this )
+        val queue = Volley.newRequestQueue(this)
         queue.add(request)
     }
 
