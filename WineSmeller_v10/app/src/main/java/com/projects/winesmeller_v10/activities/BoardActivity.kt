@@ -16,8 +16,8 @@ class BoardActivity : AppCompatActivity() {
     val LOG_ERROR   = "LOG_ERROR"
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_board)
         setSupportActionBar(findViewById(R.id.fragment_my_toolbar))
         setTitle(R.string.activityTitle_board)

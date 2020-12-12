@@ -22,6 +22,7 @@ import com.projects.winesmeller_v10.R
 import com.projects.winesmeller_v10.activities.AddWineActivity
 import com.projects.winesmeller_v10.activities.AuthActivity
 import com.projects.winesmeller_v10.activities.BoardActivity
+import com.projects.winesmeller_v10.activities.MyWineryActivity
 import kotlinx.android.synthetic.main.searchable_spinner.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -113,6 +114,11 @@ class Utilities {
 
                     R.id.nav_board -> {
                         val loginIntent = Intent(context, BoardActivity::class.java)
+                        context.startActivity(loginIntent)
+                    }
+
+                    R.id.nav_myWinery -> {
+                        val loginIntent = Intent(context, MyWineryActivity::class.java)
                         context.startActivity(loginIntent)
                     }
                 }

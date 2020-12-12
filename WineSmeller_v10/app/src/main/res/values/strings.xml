@@ -4,6 +4,7 @@
     <string name="activityTitle_auth">Autenticación</string>
     <string name="activityTitle_board">Cartel</string>
     <string name="activityTitle_addWine">Guardando en la bodega</string>
+    <string name="activityTitle_myWinery">Mi Bodega</string>
 
     // Hints
     <string name="hintEditText_email">Email</string>

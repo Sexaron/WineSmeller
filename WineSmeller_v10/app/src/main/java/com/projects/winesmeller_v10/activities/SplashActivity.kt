@@ -52,6 +52,7 @@ class SplashActivity : AppCompatActivity() {
             finish()
         } else {
             Utilities.showAuth(this)
+            finish()
         }
     }
 

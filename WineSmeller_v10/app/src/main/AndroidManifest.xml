@@ -38,6 +38,9 @@
         <activity android:name=".activities.AddWineActivity"
             android:theme="@style/AppTheme"/>
 
+        <activity android:name=".activities.MyWineryActivity"
+            android:theme="@style/AppTheme"/>
+
         <activity
             android:name=".others.OrientationCaptureActivity"
             android:screenOrientation="portrait"

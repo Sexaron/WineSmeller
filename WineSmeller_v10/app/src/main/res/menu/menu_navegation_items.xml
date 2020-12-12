@@ -11,7 +11,7 @@
             android:icon="@mipmap/ic_menu_wine"
             android:title="@string/menu_addWine" />
         <item
-            android:id="@+id/nav_yourWinery"
+            android:id="@+id/nav_myWinery"
             android:icon="@mipmap/ic_menu_yourwinery"
             android:title="@string/menu_yourWinery" />
         <item
