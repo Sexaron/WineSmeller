@@ -22,11 +22,11 @@ import com.google.zxing.integration.android.IntentIntegrator
 import com.projects.winesmeller_v10.others.Constants
 import com.projects.winesmeller_v10.others.OrientationCaptureActivity
 import com.projects.winesmeller_v10.R
+import com.projects.winesmeller_v10.objects.Wine
 import com.projects.winesmeller_v10.others.Utilities
 import kotlinx.android.synthetic.main.activity_board.drawer_layout_add_wine
 import kotlinx.android.synthetic.main.activity_board.nav_view
 import org.json.JSONObject
-import java.util.*
 
 
 class AddWineActivity : AppCompatActivity() {
@@ -47,22 +47,8 @@ class AddWineActivity : AppCompatActivity() {
         // Botones
     lateinit var btn_addWine : Button
 
-        // Valores a recuperar
-    lateinit var barcode    : TextView
-    lateinit var name       : EditText
-    lateinit var winery     : EditText
-    lateinit var aging      : TextView
-    lateinit var country    : TextView
-    lateinit var denOfOrigin: EditText
-    lateinit var wineType   : TextView
-    lateinit var year       : EditText
-    lateinit var vol        : EditText
-    lateinit var grapeType  : EditText
-    lateinit var ecologic   : CheckBox
-    lateinit var notes      : EditText
-    lateinit var typeOfGrape: TextView
-    lateinit var typeOfWine : TextView
-    lateinit var ranting    : RatingBar
+        // Instancia de nuevo vino
+    var wine : Wine = Wine()
 
         // Cámara
     lateinit var img_photo_front : ImageView
@@ -155,20 +141,8 @@ class AddWineActivity : AppCompatActivity() {
      * Asociación de los elementos del layout a las variables para inicializarlas
      *************************************************************************************/
     private fun findAllElemnts() {
-        barcode         = findViewById(R.id.edit_text_barCode)
-        name            = findViewById(R.id.edit_text_name)
-        winery          = findViewById(R.id.edit_text_winery)
-        aging           = findViewById(R.id.text_view_spinner_aging)
-        country         = findViewById(R.id.text_view_spinner_countries)
-        denOfOrigin     = findViewById(R.id.edit_text_denomination_of_origin)
-        wineType        = findViewById(R.id.text_view_spinner_wine_types)
-        year            = findViewById(R.id.edit_text_year)
-        vol             = findViewById(R.id.edit_text_alcohol)
-        grapeType       = findViewById(R.id.edit_text_type_of_grape)
-        ecologic        = findViewById(R.id.check_box_ecologic)
-        notes           = findViewById(R.id.edit_text_notes)
-        ranting         = findViewById(R.id.rating_bar_rating)
-        btn_addWine     = findViewById(R.id.button_add_wine)
+        wine.searchAllElements(this)
+        btn_addWine         = findViewById(R.id.button_add_wine)
     }
 
     /*************************************************************************************
@@ -326,27 +300,13 @@ class AddWineActivity : AppCompatActivity() {
             // Comprobar si se han rellenado todos los datos "obligatorios" ? comprobar si el barcode lo tenemos en BBDD : continuar proceso normal
             // Comparar barcode en BBDD si está ? no se hace nada : se añade a la BBDD
 
-            val barcodeST       = barcode.text.toString().toUpperCase(Locale.ROOT)
-            val nameST          = name.text.toString().toUpperCase(Locale.ROOT)
-            val wineryST        = winery.text.toString().toUpperCase(Locale.ROOT)
-            val agingST         = aging.text.toString().toUpperCase(Locale.ROOT)
-            val countryST       = country.text.toString().toUpperCase(Locale.ROOT)
-            val denOfOriginST   = denOfOrigin.text.toString().toUpperCase(Locale.ROOT)
-            val wineTypeST      = wineType.text.toString().toUpperCase(Locale.ROOT)
-            val yearST          = year.text.toString().toUpperCase(Locale.ROOT)
-            val volST           = vol.text.toString().toUpperCase(Locale.ROOT)
-            val grapeTypeST     = grapeType.text.toString().toUpperCase(Locale.ROOT)
-            val ecologicST      = ecologic.isChecked.toString().toUpperCase(Locale.ROOT)
-            val notesST         = notes.text.toString().toUpperCase(Locale.ROOT)
-            val rantingST       = ranting.rating.toString().toUpperCase(Locale.ROOT)
+            wine.setTextOnWine()
 
                 // Comprueba si todos los campos necesarios están rellenos
-            if ( barcodeST != "" && nameST != "" && wineryST != "" && agingST != "" && countryST != "" &&
-                denOfOriginST != "" && wineTypeST != "" && yearST != "" && volST != "" && grapeTypeST != "" ) {
+            if ( wine.filledFieldsCheck() ) {
 
                     // consultamos en BBDD si el barcode existe
-                existBarcode("${Constants.URL_SERVER}/${Constants.SC_EXIST_BARCODE}", barcodeST, nameST, wineryST, agingST, countryST,
-                        denOfOriginST, wineTypeST, yearST, volST, grapeTypeST, ecologicST, notesST, rantingST)
+                existBarcode("${Constants.URL_SERVER}/${Constants.SC_EXIST_BARCODE}", wine )
             } else {
                 // TODO : Guardar el vino en la bodega del usuario
                 Utilities.showHome(this)
@@ -359,24 +319,12 @@ class AddWineActivity : AppCompatActivity() {
      ***********************************************************************************/
     private fun existBarcode(
             URL: String,
-            barcodeST: String,
-            nameST: String,
-            wineryST: String,
-            agingST: String,
-            countryST: String,
-            denOfOriginST: String,
-            wineTypeST: String,
-            yearST: String,
-            volST: String,
-            grapeTypeST: String,
-            ecologicST: String,
-            notesST: String,
-            rantingST: String
+            wine : Wine
     ) {
         var resultado       : Any   = ""
         var message         : Any   = ""
 
-        val URL_TO_SEND : String = URL + "?barcode=${barcodeST}"
+        val URL_TO_SEND : String = URL + "?barcode=${wine.barcodeST}"
 
         val request = JsonObjectRequest(URL_TO_SEND, null, { response ->
             Log.i(LOG_INFO, "Response is: $response")
@@ -391,8 +339,7 @@ class AddWineActivity : AppCompatActivity() {
             } else {
 //                Toast.makeText(this, "$message", Toast.LENGTH_LONG).show()
                 // TODO : Guardar el vino en la bodega del usuario
-                addWine_BBDD("${Constants.URL_SERVER}/${Constants.SC_ADD_WINE}",
-                        barcodeST, nameST, wineryST, agingST, countryST, denOfOriginST, wineTypeST, yearST, volST, grapeTypeST, ecologicST, notesST, rantingST)
+                addWine_BBDD("${Constants.URL_SERVER}/${Constants.SC_ADD_WINE}", wine )
             }
         }, { error ->
             Log.e(LOG_ERROR, error.toString())
@@ -408,26 +355,14 @@ class AddWineActivity : AppCompatActivity() {
      ***********************************************************************************/
     private fun addWine_BBDD(
             URL: String,
-            barcode: String,
-            name: String,
-            winery: String,
-            aging: String,
-            country: String,
-            denOfOrigin: String,
-            wineType: String,
-            year: String,
-            vol: String,
-            grapeType: String,
-            ecologic: String,
-            notes: String,
-            ranting: String
+            wine : Wine
     ) {
         var resultado       : Any   = ""
         var message         : Any   = ""
 
-        val URL_TO_SEND : String = URL + "?name=${name}&vol=${vol}&year=${year}&winery=${winery}&" +
-                "barcode=${barcode}&denOfOrigin=${denOfOrigin}&ecologic=${ecologic}&aging=${aging}&" +
-                "country=${country}&grapeType=${grapeType}&wineType=${wineType}&ranting=${ranting}&notes=${notes}"
+        val URL_TO_SEND : String = URL + "?name=${wine.name}&vol=${wine.vol}&year=${wine.year}&winery=${wine.winery}&" +
+                "barcode=${wine.barcode}&denOfOrigin=${wine.denOfOrigin}&ecologic=${wine.ecologic}&aging=${wine.aging}&" +
+                "country=${wine.country}&grapeType=${wine.grapeType}&wineType=${wine.wineType}&ranting=${wine.ranting}&notes=${wine.notes}"
 
         val request = JsonObjectRequest(URL_TO_SEND, null, { response ->
             Log.i(LOG_INFO, "Response is: $response")
@@ -484,44 +419,7 @@ class AddWineActivity : AppCompatActivity() {
      * Se rellenan todos los campos del layout con los datos obtenidos anteriormente de la BBDD
      ***********************************************************************************/
     private fun fillAllFields(array: JSONObject) {
-        var barcodeRST      : Any   = ""
-        var nameRST         : Any   = ""
-        var volRST          : Any   = ""
-        var yearRST         : Any   = ""
-        var wineryRST       : Any   = ""
-        var denOfOriginRST  : Any   = ""
-        var ecologicRST     : Any   = ""
-        var agingRST        : Any   = ""
-        var countryRST      : Any   = ""
-        var grapeTypeRST    : Any   = ""
-        var wineTypeRST     : Any   = ""
-
-        barcodeRST              = array.getString("BARCODE")
-        nameRST                 = array.getString("NAME")
-        volRST                  = array.getString("VOL")
-        yearRST                 = array.getString("YEAR")
-        wineryRST               = array.getString("WINERY")
-        denOfOriginRST          = array.getString("DENOMINATION_OF_ORIGIN")
-        ecologicRST             = array.getString("ECOLOGIC")
-        agingRST                = array.getString("AGING")
-        countryRST              = array.getString("COUNTRY")
-        grapeTypeRST            = array.getString("TYPE_OF_GRAPE")
-        wineTypeRST           = array.getString("TYPE_OF_WINE")
-
-        barcode.setText(barcodeRST.toString())
-        name.setText(nameRST.toString())
-        vol.setText(volRST.toString())
-        year.setText(yearRST.toString())
-        winery.setText(wineryRST.toString())
-        denOfOrigin.setText(denOfOriginRST.toString())
-        if (ecologicRST.toString() == "TRUE") {
-            ecologic.isChecked = true
-        }
-        aging.setText(agingRST.toString())
-        country.setText(countryRST.toString())
-        grapeType.setText(grapeTypeRST.toString())
-        wineType.setText(wineTypeRST.toString())
-
+        wine.fillAllFieldsFromBBDD(array)
     }
 
 }
